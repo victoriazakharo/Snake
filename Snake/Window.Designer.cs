@@ -1,6 +1,6 @@
 ﻿namespace Snake
 {
-    partial class SnakeGame
+    partial class Window
     {
         /// <summary>
         /// Required designer variable.

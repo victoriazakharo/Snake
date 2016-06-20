@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Snake
 {
-    public partial class SnakeGame : Form
+    public partial class Window : Form
     {
         private const int WIDTH = 12;
         private const int HEIGHT = 16;
@@ -14,7 +14,7 @@ namespace Snake
         private readonly Bitmap m_GameField;
         private readonly Graphics m_GameGraphics;
 
-        public SnakeGame()
+        public Window()
         {
             InitializeComponent();
             m_GameField = new Bitmap(WIDTH * Piece.SIDE, HEIGHT * Piece.SIDE);
