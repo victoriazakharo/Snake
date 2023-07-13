@@ -20,11 +20,13 @@ namespace Snake
         public Direction Direction { get; set; }
 
         private readonly Queue<Piece> m_Pieces;
-        private readonly Brush m_Color;
+        private readonly Brush default_Color;
+        private readonly Brush head_Color;
 
         public Snake(Brush color)
         {
-            m_Color = color;
+            default_Color = color;
+            head_Color = new SolidBrush(Color.Red);
             m_Pieces = new Queue<Piece>();
         }
 
@@ -54,20 +56,22 @@ namespace Snake
 
         public void Eat(Piece food)
         {
-            m_Pieces.Enqueue(new Piece(food.X, food.Y, m_Color));
+            m_Pieces.Last().Color = default_Color;
+            m_Pieces.Enqueue(new Piece(food.X, food.Y, head_Color));
         }
 
         public void Clear()
         {
             m_Pieces.Clear();
-            m_Pieces.Enqueue(new Piece(0, 0, m_Color));
-            m_Pieces.Enqueue(new Piece(0, 1, m_Color));
+            m_Pieces.Enqueue(new Piece(0, 0, default_Color));
+            m_Pieces.Enqueue(new Piece(0, 1, head_Color));
             Direction = Direction.Down;
         }
 
         public void MoveTo(int a, int b)
         {
-            m_Pieces.Enqueue(new Piece(HeadX + a, HeadY + b, m_Color));
+            m_Pieces.Last().Color = default_Color;
+            m_Pieces.Enqueue(new Piece(HeadX + a, HeadY + b, head_Color));
             m_Pieces.Dequeue();
         }
     }

@@ -5,8 +5,8 @@ namespace Snake
     public class Piece
     {
         public static int SIDE = 25;
-        private readonly Brush m_Color;
-
+        
+        public Brush Color { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
 
@@ -14,12 +14,12 @@ namespace Snake
         {
             X = a;
             Y = b;
-            m_Color = color;
+            Color = color;
         }
 
         public void Draw(Graphics g)
         {
-            g.FillRectangle(m_Color, new Rectangle(X * SIDE, Y * SIDE, SIDE, SIDE));
+            g.FillRectangle(Color, new Rectangle(X * SIDE, Y * SIDE, SIDE, SIDE));
         }
     }
 }
